@@ -145,7 +145,7 @@ docs/
    the task list — this is the cheapest moment to change direction.
 5. **Run `/build` and `/test`.** With no application in the repository, these
    stages fall back to the workshop defaults pinned in `AGENTS.md` — Python 3,
-   `src/`, `tests/`, `pytest -q`. Point out that a different agent writes the
+   `src/`, `tests/`, `python3 -m unittest`. Point out that a different agent writes the
    tests, and why: an implementer testing their own work tends to test what the
    code does rather than what it was supposed to do.
 6. **Run `/review` and `/ship`.** Deliberately leave a `BLOCKER` in and watch
@@ -162,7 +162,7 @@ docs/
    conventions with yours.
 4. Delete the **Workshop defaults** section from `AGENTS.md` and let your own
    toolchain apply, or edit it to name your real test command (`npm test`,
-   `go test ./...`).
+   `pytest -q`, `go test ./...`).
 5. Delete agents you will not use. Six is a teaching set, not a prescription;
    three often does the job.
 

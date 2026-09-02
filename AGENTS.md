@@ -58,7 +58,7 @@ project, `/build` and `/test` use these defaults instead of guessing:
 
 - Language: **Python 3**
 - Source: `src/`, tests: `tests/`
-- Test command: `pytest -q`
+- Test command: `python3 -m unittest discover -s tests -v` (standard library, no install)
 - Dependencies: standard library only, unless the plan says otherwise and you
   asked first
 
