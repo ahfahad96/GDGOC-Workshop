@@ -63,7 +63,17 @@ Decide this before the room does.
 Anything over about 4 minutes is too long to watch in silence — that is a slot
 where you talk over the run, or where you skip to the pre-baked branch.
 
-### 0.4 Pre-flight, morning of
+### 0.4 Pick the backlog item and delete the rest
+
+`docs/backlog.md` ships four items. Leave exactly one. Item 0 (the chapter
+landing page) is the recommended live-demo subject: it is visual, the room knows
+the domain, and it puts the browser and the screenshot artifact on screen.
+
+Confirm `/build` picks **Track A** from `AGENTS.md` and not Track B — if it
+starts writing a Python module for a landing page, the track selection did not
+land, and you should say which track you expected in the `/design` prompt.
+
+### 0.5 Pre-flight, morning of
 
 ```bash
 git status                       # clean
@@ -204,6 +214,26 @@ more credibility than a clean demo does.
 While it runs, talk about `docs/backlog.md` — three items, "state the problem,
 not the solution."
 
+**The moment that matters here.** The backlog item never says "website", never
+says "good looking", and names no colour, font, or section. Watch stage 1 turn
+that into criteria. What you want to see:
+
+- no horizontal scroll at 375px width
+- body text contrast at least 4.5:1
+- zero console errors on load
+- every internal link resolves
+- no external network request — the page renders with the machine offline
+
+If instead it hands you "the design is clean and modern", **say so out loud** and
+fix it at the gate:
+
+> "That is not a criterion. Nobody can test 'clean'. This is exactly the failure
+> the spec stage exists to catch, and it just produced one — so we catch it here,
+> which is the point of having a gate at all."
+
+Rewrite that line live into something measurable. The room learns more from you
+correcting it than from it getting it right first time.
+
 When it lands, open `docs/01-spec.md` and go straight to two sections:
 
 - **Non-goals.** > "This is where scope creep dies. Three stages from now, when
@@ -265,6 +295,25 @@ the tests:
 
 Open `docs/05-test-report.md` and read the real numbers off it.
 
+**Expect gaps in the coverage matrix, and present them as the honest answer.**
+Structural tests can check markup, content, and that links resolve. They cannot
+check contrast, spacing, or whether the layout holds at 375px. Have this ready:
+
+> "Three criteria have no automated test, and that is correct — a unit test
+> cannot see a contrast ratio. Those get verified in the browser at review. What
+> would be wrong is a report claiming coverage it does not have. It said which
+> ones it could not cover, and that is the report doing its job."
+
+Then preview it:
+
+```bash
+python3 -m http.server 8000 --directory src
+```
+
+Open `http://localhost:8000` in the Antigravity browser. This is the moment the
+IDE earns its keep — screenshot the rendered page into the artifact, resize to
+375px, and check the console. A backend demo never gets this.
+
 **If `/build` runs long or goes sideways, this is your exit** — jump to section
 4 and use the pre-baked branch.
 
@@ -274,6 +323,14 @@ Open `docs/05-test-report.md` and read the real numbers off it.
 
 Switch to the pre-run branch. It is deterministic; you have rehearsed exactly
 what comes out.
+
+**Name the switch — do not let it look like disorganisation.** The live run built
+a website; `demo-output` is a backend service. Say why:
+
+> "For the review gate I am switching to a pre-run backend example. The failure
+> mode there is sharper than anything I could plant in CSS — it is a real
+> vulnerability with a real exploit, and you will see the gate catch something
+> that twelve passing tests did not."
 
 ```bash
 git checkout demo-output
@@ -401,6 +458,7 @@ Close on the one sentence worth remembering:
 | A stage takes far too long | Talk through the artifact it *would* produce, then `git checkout demo-output` and carry on from section 4. |
 | An agent goes off the rails live | Stop it. Say what went wrong and why — an unscripted failure explained well teaches more than a clean run. Then switch to `demo-output`. |
 | No network or the model is slow | Everything in section 4 except `/review` and `/ship` is local. Walk the artifacts on `demo-output` and run the exploit and the test suite from the terminal. |
+| The page pulls a CDN or Google Font and you are offline | Track A in `AGENTS.md` forbids it. Point at that line, say the agent ignored a stated constraint, and treat it as a live finding — then have `/review` catch it. |
 | Someone asks about cost or model choice | Honest answer: this scaffold is model-agnostic. The pattern is the point; the pricing is not yours to quote. |
 
 ## 7. Questions you will get

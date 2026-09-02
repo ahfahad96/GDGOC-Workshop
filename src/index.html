@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest-style Image Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Discover & Inspire</h1>
+    <p class="header-subtitle">Explore visual ideas and creative inspiration</p>
+  </header>
+
+  <main class="main-content">
+    <div id="gallery-grid" class="gallery-grid" role="region" aria-label="Image Gallery">
+      <!-- Gallery cards injected by app.js -->
+    </div>
+  </main>
+
+  <div id="image-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Image Details" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content" tabIndex="-1">
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image-container">
+          <img id="modal-img" class="modal-img" src="" alt="">
+        </div>
+        <div class="modal-details">
+          <h2 id="modal-title" class="modal-title"></h2>
+          <div id="modal-tags" class="modal-tags"></div>
+          <div class="modal-stats">
+            <span class="likes-count"><span id="modal-likes">0</span> Likes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

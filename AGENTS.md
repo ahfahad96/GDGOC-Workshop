@@ -54,16 +54,40 @@ invention.
 ## Workshop defaults
 
 This repository has no application yet. Until you point the pipeline at a real
-project, `/build` and `/test` use these defaults instead of guessing:
+project, `/build` and `/test` use one of the two tracks below instead of
+guessing. Pick the track that matches the backlog item being specced, and say
+which one you picked in `docs/02-design.md`.
 
-- Language: **Python 3**
+### Track A — static website
+
+For backlog items that produce a page someone looks at.
+
+- Source: `src/` — `index.html`, `styles.css`, and `app.js` only if behaviour
+  actually needs it
+- Tests: `tests/`, Python 3 with `unittest`, checking structure and content
+- Test command: `python3 -m unittest discover -s tests -v`
+- Preview: `python3 -m http.server 8000 --directory src`, then open
+  `http://localhost:8000` in the browser and screenshot it into the artifact
+- Dependencies: **none.** No framework, no build step, no CDN, no web font
+  fetched over the network, no external image. The page must render correctly
+  with the machine offline. Inline everything, or use a system font stack.
+
+Structural tests can check markup, content, and links. They cannot check contrast,
+spacing, or whether a layout holds at 375px. Those are verified in the browser at
+`/review`, and the test report must say so rather than claiming coverage it does
+not have.
+
+### Track B — Python service or library
+
+For backlog items that produce behaviour rather than a page.
+
 - Source: `src/`, tests: `tests/`
-- Test command: `python3 -m unittest discover -s tests -v` (standard library, no install)
+- Test command: `python3 -m unittest discover -s tests -v`
 - Dependencies: standard library only, unless the plan says otherwise and you
   asked first
 
-If you drop this scaffold into an existing project, delete this section and let
-the repository's own conventions apply.
+If you drop this scaffold into an existing project, delete this whole section and
+let the repository's own conventions apply.
 
 ## Repository conventions
 
