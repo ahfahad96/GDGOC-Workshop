@@ -137,9 +137,13 @@ docs/
 
 `WORKSHOP-RUNBOOK.md` is the delivery script — rehearsal checklist, timings,
 talking points, and failure recovery. The `demo-output` branch holds a pre-run
-pipeline (stages 1-5, with a deliberately planted SQL injection) used as the
-fallback and as the starting point for the review demo. Attendees do not need
-either; this README is their reference.
+pipeline (stages 1-5) used as the fallback and as the starting point for the
+review demo. Attendees do not need either; this README is their reference.
+
+> **Warning — `demo-output` contains a deliberate SQL injection.**
+> `src/shortener.py` on that branch interpolates caller input into a SQL string
+> on purpose, so the `/review` gate has something real to catch. It is teaching
+> material. Do not copy that file into anything. `main` is the clean scaffold.
 
 ## Workshop running order
 
