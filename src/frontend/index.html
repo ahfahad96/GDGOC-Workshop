@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Mock Homepage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1>ChatGPT</h1>
+    </header>
+
+    <main id="chat-thread" class="chat-thread">
+      <div class="welcome-message">
+        <h2>What can I help with today?</h2>
+      </div>
+    </main>
+
+    <div id="typing-indicator" class="typing-indicator hidden" aria-live="polite">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="typing-text">Thinking...</span>
+    </div>
+
+    <footer class="prompt-footer">
+      <form id="prompt-form" class="prompt-form">
+        <textarea
+          id="prompt-input"
+          class="prompt-input"
+          placeholder="Message ChatGPT..."
+          rows="1"
+        ></textarea>
+        <button id="send-btn" type="submit" class="send-btn" disabled aria-label="Send prompt">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="mock_backend.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
