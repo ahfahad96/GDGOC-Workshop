@@ -133,6 +133,14 @@ docs/
 
 ---
 
+## For the presenter
+
+`WORKSHOP-RUNBOOK.md` is the delivery script — rehearsal checklist, timings,
+talking points, and failure recovery. The `demo-output` branch holds a pre-run
+pipeline (stages 1-5, with a deliberately planted SQL injection) used as the
+fallback and as the starting point for the review demo. Attendees do not need
+either; this README is their reference.
+
 ## Workshop running order
 
 1. **Open `AGENTS.md` and `GEMINI.md`.** Two files, one precedence rule. Explain
