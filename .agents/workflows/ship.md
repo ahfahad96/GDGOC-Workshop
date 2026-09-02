@@ -1,3 +1,7 @@
+---
+description: 
+---
+
 # /ship — Stage 7: release gate
 
 Delegate this stage to the `release-manager` agent.
@@ -22,8 +26,8 @@ gate to get past it.
    numbers), Risk and rollback, Known limitations.
 3. Prepare a Conventional Commits message and stage the change.
 4. Exit check. Print the release notes path and the proposed commit subject.
+5. Push everything to the branch and open up a PR against main.
 
 ## Hard stop
 
-Do not run `git push`, do not open a pull request, do not tag. Print the command
-for the human to run.
+Once the PR has been raised, just inform the human about the summary session and stop.
